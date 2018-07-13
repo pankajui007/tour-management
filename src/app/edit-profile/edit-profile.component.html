@@ -1,0 +1,78 @@
+<div class="card">
+	<div class="card-header">
+		<strong>Edit</strong> Profile
+	</div>
+	<div class="card-body card-block">
+		<form class="form-horizontal" #editProfileForm="ngForm"(ngSubmit)="editProfile(editProfileForm.value)">
+			<div class="row form-group">
+				<div class="col col-md-3">
+					<label class=" form-control-label" for="email">Email</label>
+				</div>
+				<div class="col-12 col-md-9">
+					<input type="text" class="form-control" [(ngModel)]="user.email" disabled="" placeholder="Email" id="email" name="email" required #email="ngModel" >
+				</div> 
+			</div>
+			<div class="row form-group">
+				<div class="col col-md-3">
+					<label class=" form-control-label" for="phoneNumber">Phone Number</label>
+				</div>
+				<div class="col-12 col-md-9">
+					<input type="email" class="form-control" [(ngModel)]="user.phone" placeholder="Phone Number" id="phoneNumber" name="phoneNumber" required #phoneNumber="ngModel">
+					<div style="color:red" *ngIf="phoneNumber.errors && (phoneNumber.dirty || phoneNumber.touched)">
+						<p style="color:red" *ngIf="phoneNumber.errors.required">
+							Please Enter Your Mobile Number
+						</p>							
+					</div>
+				</div>
+			</div>
+			<div class="row form-group">
+				<div class="col col-md-3">
+					<label class=" form-control-label" for="address">Address</label>
+				</div>
+				<div class="col-12 col-md-9">
+					<input type="text" class="form-control" [(ngModel)]="user.address" placeholder="Address" name="address" id="address" required #address="ngModel">
+					<div style="color:red" *ngIf="address.errors && (address.dirty || address.touched)">
+						<p style="color:red" *ngIf="address.errors.required">
+							Please Enter Your Parmanent Address
+						</p>							
+					</div>
+				</div>
+			</div>
+			<div class="row form-group">
+				<div class="col col-md-3"><label class=" form-control-label" for="gender">Gender</label></div>
+				<div class="col-12 col-md-9">
+					<input type="text" class="form-control" [(ngModel)]="user.gender" placeholder="Gender" name="gender" id="gender" required #gender="ngModel" >
+					<div style="color:red" *ngIf="gender.errors && (gender.dirty || gender.touched)">
+						<p style="color:red" *ngIf="gender.errors.required">
+							Please Enter Your Parmanent Address
+						</p>							
+					</div>
+				</div>
+			</div>
+			<div class="row form-group">
+				<div class="col col-md-3">
+					<label class=" form-control-label" for="profilePic">File input</label>
+				</div>
+				<div class="col-12 col-md-9">				
+					<input type="file" class="form-control-file" [(ngModel)]="user.profilePic" name="profilePic" id="profilePic" required #profilePic="ngModel" />
+					<div style="color:red" *ngIf="profilePic.errors && (profilePic.dirty || profilePic.touched)">
+						<p style="color:red" *ngIf="profilePic.errors.required">
+							Please Upload you Profile pic
+						</p>							
+					</div>
+					<div class="btn btn-primary btn-sm" (click)="uploader.uploadAll()" >upload</div>
+				</div>
+			</div>
+			<div class="card-footer">
+				<button class="btn btn-primary btn-sm" type="submit" [disabled]="!editProfileForm.form.valid">
+					<i class="fa fa-dot-circle-o"></i> Submit
+				</button>
+				<button class="btn btn-danger btn-sm" type="reset">
+					<i class="fa fa-ban"></i> Reset
+				</button>
+			</div>
+		</form>
+	</div>
+	
+	<!-- {{editProfileForm.value | json}} -->
+</div>

@@ -1,0 +1,20 @@
+<!-- Header-->
+<header id="header" class="header">
+	<div class="header-menu">
+		<div class="col-sm-7">
+			
+		</div>
+		<div class="col-sm-5">
+			<div class="user-area dropdown float-right">
+				<a href="javascript:void(0);"  (click)="profileDropdownactive = !profileDropdownactive">
+					<img class="user-avatar rounded-circle" src="../assets/images/admin.jpg" alt="User Avatar">
+				</a>
+				<div class="user-menu" *ngIf="!profileDropdownactive">
+					<a class="nav-link" routerLink="/profile" (click)="profileDropdownactive = !profileDropdownactive"><i class="fa fa- user"></i>My Profile</a>
+					<a class="nav-link" href="javascript:void(0);" (click)="logout()"><i class="fa fa-power -off"></i>Logout</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+<!-- /header -->

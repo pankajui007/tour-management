@@ -1,0 +1,32 @@
+<div class="card">
+	<div class="card-header">
+		<strong class="card-title">{{title}}</strong>
+	</div>
+	<div class="card-body">
+		<table class="table table-bordered">
+		  <thead>
+			<tr>
+			  <th scope="col">ID</th>
+			  <th scope="col">First Name</th>
+			  <th scope="col">Last Name</th>
+			  <th scope="col">Email</th>
+			  <th scope="col">Gender</th>
+			  <th scope="col" align="center">action</th>
+			</tr>
+		  </thead>
+		  <tbody> 
+			<tr *ngFor="let tourist of tourists">
+			  <td>{{tourist.id}}</td> 
+			  <td>{{tourist.first_name}}</td>
+			  <td>{{tourist.last_name}}</td>
+			  <td>{{tourist.email}}</td>
+			  <td>{{tourist.gender}}</td>
+			  <td align="center">
+				<a class="btn btn-outline-primary" [routerLink]="['/updateTourist',tourist.id ]" ><i class="fa fa-pencil" aria-hidden="true"></i></a>
+				<button class="btn btn-outline-danger" (click)="deleteTourist(tourist)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+			  </td>
+			</tr>
+		  </tbody>
+		</table>
+	</div>
+</div>

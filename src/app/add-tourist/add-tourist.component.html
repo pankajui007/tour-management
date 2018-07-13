@@ -1,0 +1,84 @@
+<div class="card">
+	<div class="card-header">
+		<strong>{{title}}</strong> Form
+	</div> 
+	<!--<div *ngIf="messageService.messages.length">
+	  <h2>Messages</h2>
+	  <button class="clear" (click)="messageService.clear()">clear</button>
+	  <div *ngFor='let message of messageService.messages'> {{message}} </div>
+	</div>-->
+	<form class="form-horizontal" #personForm="ngForm"(ngSubmit)="saveTourist(personForm.value)">
+		<div *ngIf="messageService.messages.length" class="alert alert-success">			
+			<div *ngFor='let message of messageService.messages'> {{message}} </div>
+		</div>
+		<div class="card-body card-block">
+			<div class="row form-group">
+				<div class="col col-md-3">
+					<label class=" form-control-label" for="first_name">First Name</label>
+				</div>
+				<div class="col-12 col-md-9">
+					<input [(ngModel)]="tourists.first_name" type="text" class="form-control" placeholder="First Name" name="first_name" id="first_name" required #first_name="ngModel">
+					<div style="color:red" *ngIf="first_name.errors && (first_name.dirty || first_name.touched)">
+						<p style="color:red" *ngIf="first_name.errors.required">
+							Please Enter Your First Name
+						</p>							
+					</div>
+				</div>
+			</div>
+			<div class="row form-group">
+				<div class="col col-md-3">
+					<label class=" form-control-label" for="last_name">Last Name</label>
+				</div>
+				<div class="col-12 col-md-9">
+					<input [(ngModel)]="tourists.last_name" type="text" class="form-control" placeholder="Last Name" name="last_name" id="last_name" #last_name="ngModel" required>
+					<div style="color:red" *ngIf="last_name.errors && (last_name.dirty || last_name.touched)">
+						<p style="color:red" *ngIf="last_name.errors.required">
+							Please Enter Your Last Name
+						</p>							
+					</div>
+				</div>
+			</div>
+			<div class="row form-group">
+				<div class="col col-md-3">
+					<label class=" form-control-label" for="email">Email</label>
+				</div>
+				<div class="col-12 col-md-9">
+					<input [(ngModel)]="tourists.email" type="email" class="form-control" placeholder="email" name="email" id="email" required #email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"/>
+					<div *ngIf="email.errors && (email.dirty || email.touched)" style="color:red">
+						<p style="color:red" *ngIf="email.errors.required">
+							Email is required.
+						</p>
+						<p style="color:red" *ngIf="email.errors.pattern">
+							Please entered a valid Email.
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="row form-group">
+				<div class="col col-md-3">
+					<label class=" form-control-label" for="gender">Gender</label>
+				</div>
+				<div class="col-12 col-md-9">
+					<select [(ngModel)]="tourists.gender" placeholder="Please Select Gender" class="form-control" name="gender" id="gender" #gender="ngModel" required>
+						<option>Male</option>
+						<option>Female</option>
+					</select>
+					<div style="color:red" *ngIf="gender.errors && (gender.dirty || gender.touched)">
+						<p style="color:red" *ngIf="gender.errors.required">
+							Please Select Any Value
+						</p>							
+					</div>
+				</div>
+			</div>			
+		</div>
+		<div class="card-footer">
+			<button class="btn btn-primary btn-sm" type="submit" [disabled]="!personForm.form.valid">
+				<i class="fa fa-dot-circle-o"></i> Submit
+			</button>
+			<button class="btn btn-danger btn-sm" type="reset" (click)="personForm.reset()">
+				<i class="fa fa-ban"></i> Reset
+			</button>
+		</div>	
+		<!--<pre>{{personForm.value | json}}</pre>		-->
+	</form>
+</div>
